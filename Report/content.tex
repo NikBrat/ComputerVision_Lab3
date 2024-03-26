@@ -840,6 +840,287 @@ $p(z)$ случайной величины $z$ описывается следу
 
 \subsubsection{Адаптивная медианная фильтрация}
 \subsubsection{Ранговая фильтрация}
+
+\begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{rang_3_1:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Impulse_noise_(k=3,r=1).jpg} 
+      \caption{Импульсный шум} 
+      \label{rang_3_1:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Additive_noise_(k=3,r=1).jpg} 
+      \caption{Аддитивный шум} 
+      \label{rang_3_1:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Gaussian_noise_(k=3,r=1).jpg} 
+      \caption{Гауссов шум} 
+      \label{rang_3_1:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Poisson_noise_(k=3,r=1).jpg} 
+      \caption{Шум квантования} 
+      \label{rang_3_1:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Speckle_noise_(k=3,r=1).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{rang_3_1:f} 
+    \end{subfigure} 
+    \caption{Результат применения ранговой фильтрации к различным типам шумов при $k = 3, r = 1$}
+    \label{img:rang_3_1} 
+\end{figure}
+
+\begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{rang_3_5:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Impulse_noise_(k=3,r=5).jpg} 
+      \caption{Импульсный шум} 
+      \label{rang_3_5:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Additive_noise_(k=3,r=5).jpg} 
+      \caption{Аддитивный шум} 
+      \label{rang_3_5:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Gaussian_noise_(k=3,r=5).jpg} 
+      \caption{Гауссов шум} 
+      \label{rang_3_5:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Poisson_noise_(k=3,r=5).jpg} 
+      \caption{Шум квантования} 
+      \label{rang_3_5:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Speckle_noise_(k=3,r=5).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{rang_3_5:f} 
+    \end{subfigure} 
+    \caption{Результат применения ранговой фильтрации к различным типам шумов при $k = 3, r = 5$}
+    \label{img:rang_3_5} 
+\end{figure}
+
+\begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{rang_3_9:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Impulse_noise_(k=3,r=9).jpg} 
+      \caption{Импульсный шум} 
+      \label{rang_3_9:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Additive_noise_(k=3,r=9).jpg} 
+      \caption{Аддитивный шум} 
+      \label{rang_3_9:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Gaussian_noise_(k=3,r=9).jpg} 
+      \caption{Гауссов шум} 
+      \label{rang_3_9:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Poisson_noise_(k=3,r=9).jpg} 
+      \caption{Шум квантования} 
+      \label{rang_3_9:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Speckle_noise_(k=3,r=9).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{rang_3_9:f} 
+    \end{subfigure} 
+    \caption{Результат применения ранговой фильтрации к различным типам шумов при $k = 3, r = 9$}
+    \label{img:rang_3_9} 
+\end{figure}
+
+
+
+
+\begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{rang_5_1:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Impulse_noise_(k=5,r=1).jpg} 
+      \caption{Импульсный шум} 
+      \label{rang_5_1:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Additive_noise_(k=5,r=1).jpg} 
+      \caption{Аддитивный шум} 
+      \label{rang_5_1:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Gaussian_noise_(k=5,r=1).jpg} 
+      \caption{Гауссов шум} 
+      \label{rang_5_1:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Poisson_noise_(k=5,r=1).jpg} 
+      \caption{Шум квантования} 
+      \label{rang_5_1:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Speckle_noise_(k=5,r=1).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{rang_5_1:f} 
+    \end{subfigure} 
+    \caption{Результат применения ранговой фильтрации к различным типам шумов при $k = 5, r = 1$}
+    \label{img:rang_5_1} 
+\end{figure}
+
+\begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{rang_5_14:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Impulse_noise_(k=5,r=14).jpg} 
+      \caption{Импульсный шум} 
+      \label{rang_5_14:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Additive_noise_(k=5,r=14).jpg} 
+      \caption{Аддитивный шум} 
+      \label{rang_5_14:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Gaussian_noise_(k=5,r=14).jpg} 
+      \caption{Гауссов шум} 
+      \label{rang_5_14:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Poisson_noise_(k=5,r=14).jpg} 
+      \caption{Шум квантования} 
+      \label{rang_5_14:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Speckle_noise_(k=5,r=14).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{rang_5_14:f} 
+    \end{subfigure} 
+    \caption{Результат применения ранговой фильтрации к различным типам шумов при $k = 5, r = 14$}
+    \label{img:rang_5_14} 
+\end{figure}
+
+\begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{rang_5_25:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Impulse_noise_(k=5,r=25).jpg} 
+      \caption{Импульсный шум} 
+      \label{rang_5_25:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Additive_noise_(k=5,r=25).jpg} 
+      \caption{Аддитивный шум} 
+      \label{rang_5_25:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Gaussian_noise_(k=5,r=25).jpg} 
+      \caption{Гауссов шум} 
+      \label{rang_5_25:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Poisson_noise_(k=5,r=25).jpg} 
+      \caption{Шум квантования} 
+      \label{rang_5_25:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Rang_Filter/Rang_Speckle_noise_(k=5,r=25).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{rang_5_25:f} 
+    \end{subfigure} 
+    \caption{Результат применения ранговой фильтрации к различным типам шумов при $k = 5, r = 25$}
+    \label{img:rang_5_25} 
+\end{figure}
+\FloatBarrier
+
 \subsubsection{Винеровская фильтрация}
 
 \begin{figure}[ht] 
