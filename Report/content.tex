@@ -48,6 +48,8 @@ $d = 255$ — шум типа «соль».
 \end{figure}
 \FloatBarrier
 
+Наложив аддитивный шум на исходное изображение, мы получили как будто выцветшую картинку, на которой также появилась небольшая зернистость
+
 \subsection{Мультипликативный шум}
 Мультипликативный шум описывается следующим выражением:
 \begin{equation}
@@ -63,6 +65,8 @@ $d = 255$ — шум типа «соль».
     \label{img:speckle_noise}
 \end{figure}
 \FloatBarrier
+
+Мы получили изображение на котором можно отчетливо наблюдать светлые пятна, крапинки (спеклы), которые разделены темными участками изображения, что соответственно характерно при наложении спекл-шума
 
 \subsection{Гауссов (нормальный) шум}
 Функция распределения плотности вероятности
@@ -81,6 +85,7 @@ $p(z)$ случайной величины $z$ описывается следу
 \end{figure}
 \FloatBarrier
 
+При применении Гауссового (нормального) шума к изображению, оно становится более размытым или зернистым. Он добавляет случайные значения пикселям изображения, что приводит к потере деталей и четкости.
 
 \subsection{Шум квантования}
 Приближенно шум квантования можно описать распределением Пуассона. Такой шум не устраняется.
@@ -92,6 +97,8 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:poisson_noise}
 \end{figure}
 \FloatBarrier
+
+Шум на первый взгляд может показаться незаметным, но он есть, при сильном растяжении изображения это видно. На картинке появилась очень мелкая зернистость
 
 \section{Фильтрация изображений}
 \textit{Локальным} преобразованием называется такое преобразование, при котором для вычисления значения интенсивности каждого пикселя учитываются значения соседних пикселей в некоторой окрестности, называемой \textit{окном}, представляющей собой некоторую матрицу, которую также называют \textit{маской, фильтром, ядром фильтра}, а сами значения элементов
@@ -119,10 +126,286 @@ $p(z)$ случайной величины $z$ описывается следу
 \end{equation}
 
 
-Рассмотрим применение фильтра при $Q > 0$, $Q < 0$ и
-$Q = 0$.
+Рассмотрим применение фильтра при $Q > 0$ и $Q < 0$ к различным типам шумов. 
 
-\newpage
+\begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{contraharmonic_-1.85:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Impulse_noise_(m,n=(3,_3),q=-1.85).jpg} 
+      \caption{Импульсный шум} 
+      \label{contraharmonic_-1.85:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Additive_noise_(m,n=(3,_3),q=-1.85).jpg} 
+      \caption{Аддитивный шум} 
+      \label{contraharmonic_-1.85:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Gaussian_noise_(m,n=(3,_3),q=-1.85).jpg} 
+      \caption{Гауссов шум} 
+      \label{contraharmonic_-1.85:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Poisson_noise_(m,n=(3,_3),q=-1.85).jpg} 
+      \caption{Шум квантования} 
+      \label{contraharmonic_-1.85:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Speckle_noise_(m,n=(3,_3),q=-1.85).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{contraharmonic_-1.85:f} 
+    \end{subfigure} 
+    \caption{Результат применения контргармонического усредняющего фильтра при значении $Q = -1.85$ к различным типам шумов}
+    \label{img:contraharmonic_-1.85} 
+  \end{figure}
+
+  \begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{contraharmonic_-0.85:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Impulse_noise_(m,n=(3,_3),q=-0.85).jpg} 
+      \caption{Импульсный шум} 
+      \label{contraharmonic_-0.85:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Additive_noise_(m,n=(3,_3),q=-0.85).jpg} 
+      \caption{Аддитивный шум} 
+      \label{contraharmonic_-0.85:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Gaussian_noise_(m,n=(3,_3),q=-0.85).jpg} 
+      \caption{Гауссов шум} 
+      \label{contraharmonic_-0.85:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Poisson_noise_(m,n=(3,_3),q=-0.85).jpg} 
+      \caption{Шум квантования} 
+      \label{contraharmonic_-0.85:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Speckle_noise_(m,n=(3,_3),q=-0.85).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{contraharmonic_-0.85:f} 
+    \end{subfigure} 
+    \caption{Результат применения контргармонического усредняющего фильтра при значении $Q = -0.85$ к различным типам шумов}
+    \label{img:contraharmonic_-0.85} 
+  \end{figure}
+
+  \begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{contraharmonic_-0.5:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Impulse_noise_(m,n=(3,_3),q=-0.5).jpg} 
+      \caption{Импульсный шум} 
+      \label{contraharmonic_-0.5:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Additive_noise_(m,n=(3,_3),q=-0.5).jpg} 
+      \caption{Аддитивный шум} 
+      \label{contraharmonic_-0.5:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Gaussian_noise_(m,n=(3,_3),q=-0.5).jpg} 
+      \caption{Гауссов шум} 
+      \label{contraharmonic_-0.5:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Poisson_noise_(m,n=(3,_3),q=-0.5).jpg} 
+      \caption{Шум квантования} 
+      \label{contraharmonic_-0.5:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Speckle_noise_(m,n=(3,_3),q=-0.5).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{contraharmonic_-0.5:f} 
+    \end{subfigure} 
+    \caption{Результат применения контргармонического усредняющего фильтра при значении $Q = -0.5$ к различным типам шумов}
+    \label{img:contraharmonic_-0.5} 
+  \end{figure}
+
+  \begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{contraharmonic_0.5:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Impulse_noise_(m,n=(3,_3),q=0.5).jpg} 
+      \caption{Импульсный шум} 
+      \label{contraharmonic_0.5:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Additive_noise_(m,n=(3,_3),q=0.5).jpg} 
+      \caption{Аддитивный шум} 
+      \label{contraharmonic_0.5:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Gaussian_noise_(m,n=(3,_3),q=0.5).jpg} 
+      \caption{Гауссов шум} 
+      \label{contraharmonic_0.5:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Poisson_noise_(m,n=(3,_3),q=0.5).jpg} 
+      \caption{Шум квантования} 
+      \label{contraharmonic_0.5:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Speckle_noise_(m,n=(3,_3),q=0.5).jpg} 
+
+        \caption{Мультипликативный шум} 
+        \label{contraharmonic_0.5:f} 
+    \end{subfigure} 
+    \caption{Результат применения контргармонического усредняющего фильтра при значении $Q = 0.5$ к различным типам шумов}
+    \label{img:contraharmonic_0.5} 
+  \end{figure}
+
+  \begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{contraharmonic_0.85:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Impulse_noise_(m,n=(3,_3),q=0.85).jpg} 
+      \caption{Импульсный шум} 
+      \label{contraharmonic_0.85:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Additive_noise_(m,n=(3,_3),q=0.85).jpg} 
+      \caption{Аддитивный шум} 
+      \label{contraharmonic_0.85:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Gaussian_noise_(m,n=(3,_3),q=0.85).jpg} 
+      \caption{Гауссов шум} 
+      \label{contraharmonic_0.85:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Poisson_noise_(m,n=(3,_3),q=0.85).jpg} 
+      \caption{Шум квантования} 
+      \label{contraharmonic_0.85:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Speckle_noise_(m,n=(3,_3),q=0.85).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{contraharmonic_0.85:f} 
+    \end{subfigure} 
+    \caption{Результат применения контргармонического усредняющего фильтра при значении $Q = 0.85$ к различным типам шумов}
+    \label{img:contraharmonic_0.85} 
+  \end{figure}
+
+  \begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{contraharmonic_1.85:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Impulse_noise_(m,n=(3,_3),q=1.85).jpg} 
+      \caption{Импульсный шум} 
+      \label{contraharmonic_1.85:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Additive_noise_(m,n=(3,_3),q=1.85).jpg} 
+      \caption{Аддитивный шум} 
+      \label{contraharmonic_1.85:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Gaussian_noise_(m,n=(3,_3),q=1.85).jpg} 
+      \caption{Гауссов шум} 
+      \label{contraharmonic_1.85:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Poisson_noise_(m,n=(3,_3),q=1.85).jpg} 
+      \caption{Шум квантования} 
+      \label{contraharmonic_1.85:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Contraharmonic_Filter/Contraharmonic_Speckle_noise_(m,n=(3,_3),q=1.85).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{contraharmonic_1.85:f} 
+    \end{subfigure} 
+    \caption{Результат применения контргармонического усредняющего фильтра при значении $Q = 1.85$ к различным типам шумов}
+    \label{img:contraharmonic_1.85} 
+  \end{figure}
+
+  \FloatBarrier
 
 \subsubsection{Фильтр Гаусса}
 При фильтрации изображений будем использовать двумерный фильтр Гаусса:
@@ -130,11 +413,430 @@ $Q = 0$.
    G_\sigma = \frac{1}{2\pi\sigma^2} e^{-\frac{x^2+y^2}{2\sigma^2}} = \frac{1}{\sigma\sqrt{2\pi}} e^{\frac{-x^2}{2\sigma^2}} \cdot \frac{1}{\sigma\sqrt{2\pi}} e^{\frac{-y^2}{2\sigma^2}}
 \end{equation}
 
+\begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{gaussian_3:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Impulse_noise_(3,3).jpg} 
+      \caption{Импульсный шум} 
+      \label{gaussian_3:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Additive_noise_(3,3).jpg} 
+      \caption{Аддитивный шум} 
+      \label{gaussian_3:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Gaussian_noise_(3,3).jpg} 
+      \caption{Гауссов шум} 
+      \label{gaussian_3:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Poisson_noise_(3,3).jpg} 
+      \caption{Шум квантования} 
+      \label{gaussian_3:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Speckle_noise_(3,3).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{gaussian_3:f} 
+    \end{subfigure} 
+    \caption{Результат применения фильтра Гаусса к различным типам шумов при $n = 3$}
+    \label{img:gaussian_3} 
+  \end{figure}
+
+  \begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{gaussian_7:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Impulse_noise_(7,7).jpg} 
+      \caption{Импульсный шум} 
+      \label{gaussian_7:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Additive_noise_(7,7).jpg} 
+      \caption{Аддитивный шум} 
+      \label{gaussian_7:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Gaussian_noise_(7,7).jpg} 
+      \caption{Гауссов шум} 
+      \label{gaussian_7:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Poisson_noise_(7,7).jpg} 
+      \caption{Шум квантования} 
+      \label{gaussian_7:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Speckle_noise_(7,7).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{gaussian_7:f} 
+    \end{subfigure} 
+    \caption{Результат применения фильтра Гаусса к различным типам шумов при $n = 7$}
+    \label{img:gaussian_7} 
+  \end{figure}
+
+  \begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{gaussian_11:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Impulse_noise_(11,11).jpg} 
+      \caption{Импульсный шум} 
+      \label{gaussian_11:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Additive_noise_(11,11).jpg} 
+      \caption{Аддитивный шум} 
+      \label{gaussian_11:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Gaussian_noise_(11,11).jpg} 
+      \caption{Гауссов шум} 
+      \label{gaussian_11:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Poisson_noise_(11,11).jpg} 
+      \caption{Шум квантования} 
+      \label{gaussian_11:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Gaussian_Blur/Gaussian_Blur_Speckle_noise_(11,11).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{gaussian_11:f} 
+    \end{subfigure} 
+    \caption{Результат применения фильтра Гаусса к различным типам шумов при $n = 11$}
+    \label{img:gaussian_11} 
+\end{figure}
+  \FloatBarrier
 
 \subsection{Нелинейная фильтрация}
+
 \subsubsection{Медианная фильтрация}
 
+\begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{median_3:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Impulse_noise_(k=3).jpg} 
+      \caption{Импульсный шум} 
+      \label{median_3:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Additive_noise_(k=3).jpg} 
+      \caption{Аддитивный шум} 
+      \label{median_3:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Gaussian_noise_(k=3).jpg} 
+      \caption{Гауссов шум} 
+      \label{median_3:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Poisson_noise_(k=3).jpg} 
+      \caption{Шум квантования} 
+      \label{median_3:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Speckle_noise_(k=3).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{median_3:f} 
+    \end{subfigure} 
+    \caption{Результат применения медианной фильтрации к различным типам шумов при $k = 3$}
+    \label{img:median_3} 
+\end{figure}
+
+\begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{median_5:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Impulse_noise_(k=5).jpg} 
+      \caption{Импульсный шум} 
+      \label{median_5:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Additive_noise_(k=5).jpg} 
+      \caption{Аддитивный шум} 
+      \label{median_5:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Gaussian_noise_(k=5).jpg} 
+      \caption{Гауссов шум} 
+      \label{median_5:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Poisson_noise_(k=5).jpg} 
+      \caption{Шум квантования} 
+      \label{median_5:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Speckle_noise_(k=5).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{median_5:f} 
+    \end{subfigure} 
+    \caption{Результат применения медианной фильтрации к различным типам шумов при $k = 5$}
+    \label{img:median_5} 
+\end{figure}
+
+\begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{median_7:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Impulse_noise_(k=7).jpg} 
+      \caption{Импульсный шум} 
+      \label{median_7:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Additive_noise_(k=7).jpg} 
+      \caption{Аддитивный шум} 
+      \label{median_7:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Gaussian_noise_(k=7).jpg} 
+      \caption{Гауссов шум} 
+      \label{median_7:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Poisson_noise_(k=7).jpg} 
+      \caption{Шум квантования} 
+      \label{median_7:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Median_FIlter/Median_Speckle_noise_(k=7).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{median_7:f} 
+    \end{subfigure} 
+    \caption{Результат применения медианной фильтрации к различным типам шумов при $k = 7$}
+    \label{img:median_7} 
+\end{figure}
+\FloatBarrier
+
 \subsubsection{Взвешенная медианная фильтрация}
+
+
+\begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{median_3:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DImpulse_noise_(k=3).jpg} 
+      \caption{Импульсный шум} 
+      \label{median_3:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DAdditive_noise_(k=3).jpg} 
+      \caption{Аддитивный шум} 
+      \label{median_3:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DGaussian_noise_(k=3).jpg} 
+      \caption{Гауссов шум} 
+      \label{median_3:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DPoisson_noise_(k=3).jpg} 
+      \caption{Шум квантования} 
+      \label{median_3:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DSpeckle_noise_(k=3).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{median_3:f} 
+    \end{subfigure} 
+    \caption{Результат применения взвешенной медианной фильтрации к различным типам шумов при $k = 3$}
+    \label{img:median_3} 
+\end{figure}
+
+\begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{median_5:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DImpulse_noise_(k=5).jpg} 
+      \caption{Импульсный шум} 
+      \label{median_5:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DAdditive_noise_(k=5).jpg} 
+      \caption{Аддитивный шум} 
+      \label{median_5:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DGaussian_noise_(k=5).jpg} 
+      \caption{Гауссов шум} 
+      \label{median_5:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DPoisson_noise_(k=5).jpg} 
+      \caption{Шум квантования} 
+      \label{median_5:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DSpeckle_noise_(k=5).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{median_5:f} 
+    \end{subfigure} 
+    \caption{Результат применения взвешенной медианной фильтрации к различным типам шумов при $k = 5$}
+    \label{img:median_5} 
+\end{figure}
+
+\begin{figure}[ht] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{median_7:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DImpulse_noise_(k=7).jpg} 
+      \caption{Импульсный шум} 
+      \label{median_7:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DAdditive_noise_(k=7).jpg} 
+      \caption{Аддитивный шум} 
+      \label{median_7:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DGaussian_noise_(k=7).jpg} 
+      \caption{Гауссов шум} 
+      \label{median_7:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DPoisson_noise_(k=7).jpg} 
+      \caption{Шум квантования} 
+      \label{median_7:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Median_2D_Filter/Median_2DSpeckle_noise_(k=7).jpg} 
+        \caption{Мультипликативный шум} 
+        \label{median_7:f} 
+    \end{subfigure} 
+    \caption{Результат применения взвешенной медианной фильтрации к различным типам шумов при $k = 7$}
+    \label{img:median_7} 
+\end{figure}
+
+
 \subsubsection{Адаптивная медианная фильтрация}
 \subsubsection{Ранговая фильтрация}
 \subsubsection{Винеровская фильтрация}
