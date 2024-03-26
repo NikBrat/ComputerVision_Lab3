@@ -148,8 +148,8 @@ def wiener(src, k):
         bgr_planes_2.append(plane_2)
     # Merge image back
     filtered_image = cv.merge(bgr_planes_2)
-    if src.dtype != np.uint8:
-        filtered_image = (255 * filtered_image).clip(0, 255).astype(np.uint8)
+    if src.dtype == np.uint8:
+        filtered_image = (255*filtered_image).clip(0, 255).astype(np.uint8)
 
     return filtered_image
 
@@ -175,8 +175,7 @@ def image_filtering(option: int, noisy_image, name: str, kx: int = 3, ky: int = 
             image_display(mdf, f'Median_2D{name}_(k={k})', 'Median_2D_Filter')
         case 5:
             # Rang Filter
-            rn = rang_filter(noisy_image, k, r)
-            print(rn)
+            rn = rang_filter(noisy_image, k, r)*255
             image_display(rn, f'Rang_{name}_(k={k},r={r+1})', 'Rang_Filter')
         case 6:
             # Wiener Filter
@@ -195,4 +194,4 @@ def image_filtering(option: int, noisy_image, name: str, kx: int = 3, ky: int = 
 titles = ["Additive_noise", "Gaussian_noise", "Impulse_noise", "Speckle_noise", "Poisson_noise"]
 for title in titles:
     nim = cv.imread(f"Noisy_images/{title}.jpg", 0)
-    image_filtering(5, nim, title, k=3, r=0)
+    image_filtering(5, nim, title, k=5, r=24)
