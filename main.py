@@ -2,6 +2,7 @@ import sys
 import cv2 as cv
 import numpy as np
 import skimage as ski
+import scipy
 
 
 def image_display(image, title: str, folder: str):
@@ -78,7 +79,7 @@ def contraharmonic(image, m: int, n: int, q):
     return filtered_image.clip(0, 255).astype(np.uint8)
 
 
-def image_filtering(option: int, noisy_image, name: str, kx: int = 3, ky: int = 3, m=3, n=3, q=0.0):
+def image_filtering(option: int, noisy_image, name: str, kx: int = 3, ky: int = 3, m=3, n=3, q=0.0, k=0):
     """Image Filtering"""
     match option:
         case 1:
@@ -89,7 +90,14 @@ def image_filtering(option: int, noisy_image, name: str, kx: int = 3, ky: int = 
             # Contraharmonic mean filter
             ch = contraharmonic(noisy_image, m, n, q)
             image_display(ch, f'Contraharmonic_{name}_(m,n={(m,n)},q={q})', 'Contraharmonic_Filter')
-            pass
+        case 3:
+            # Median Filter
+            md = cv.medianBlur(noisy_image, k)
+            image_display(md, f'Median_{name}_(k={k})', 'Median_Filter')
+        case 4:
+            # 2D-Median Filter
+            mdf = scipy.signal.medfilt2d(noisy_image, k)
+            image_display(mdf, f'Median_2D{name}_(k={k})', 'Median_2D_Filter')
         case _:
             # displaying noisy image
             image_display(noisy_image, 'Noisy_image', 'Noisy_images')
@@ -103,4 +111,4 @@ def image_filtering(option: int, noisy_image, name: str, kx: int = 3, ky: int = 
 titles = ["Additive_noise", "Gaussian_noise", "Impulse_noise", "Speckle_noise", "Poisson_noise"]
 for title in titles:
     nim = cv.imread(f"Noisy_images/{title}.jpg", 0)
-    image_filtering(2, nim, title, m=3, n=3, q=1.85)
+    image_filtering(3, nim, title, k=7)
