@@ -187,6 +187,66 @@ def image_filtering(option: int, noisy_image, name: str, kx: int = 3, ky: int = 
     return 0
 
 
+def robertson_detection(src_image):
+    g_x = np.array([[1, -1], [0, 0]])
+    g_y = np.array([[1, 0], [-1, 0]])
+    i_x = cv.filter2D(src_image, -1, g_x)
+    i_y = cv.filter2D(src_image, -1, g_y)
+
+    abs_grad_x = cv.convertScaleAbs(i_x)
+    abs_grad_y = cv.convertScaleAbs(i_y)
+
+    return cv.addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0)
+
+
+def prewitt_detection(src_image):
+    g_x = np.array([[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]])
+    g_y = np.array([[-1, -1, -1], [0, 0, 0], [1, 1, 1]])
+    i_x = cv.filter2D(src_image, -1, g_x)
+    i_y = cv.filter2D(src_image, -1, g_y)
+
+    abs_grad_x = cv.convertScaleAbs(i_x)
+    abs_grad_y = cv.convertScaleAbs(i_y)
+
+    return cv.addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0)
+
+
+def sobel_detection(src_image):
+    i_x = cv.Sobel(src_image, cv.CV_16S, 1, 0)
+    i_y = cv.Sobel(src_image, cv.CV_16S, 0, 1)
+
+    abs_grad_x = cv.convertScaleAbs(i_x)
+    abs_grad_y = cv.convertScaleAbs(i_y)
+
+    return cv.addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0)
+
+
+def laplassian_detection(src_image):
+    g_d = np.array([[0, -1, 0], [-1, 4, -1], [0, -1, 0]])
+    return cv.filter2D(src_image, -1, g_d)
+
+
+def edge_detection(option: int, noisy_image, title):
+    match option:
+        case 1:
+            rb = robertson_detection(noisy_image)
+            image_display(rb, f'Robertson_{title}', 'Edge_Detection')
+        case 2:
+            pr = prewitt_detection(noisy_image)
+            image_display(pr, f'Prewitt_{title}', 'Edge_Detection')
+        case 3:
+            sb = sobel_detection(noisy_image)
+            image_display(sb, f'Sobel_{title}', 'Edge_Detection')
+        case 4:
+            lp = laplassian_detection(noisy_image)
+            image_display(lp, f'Laplassian_{title}', 'Edge_Detection')
+        case 5:
+            cn = cv.Canny(noisy_image, 100, 200)
+            image_display(cn, f'Canny_{title}', 'Edge_Detection')
+        case _:
+            pass
+
+
 # src = cv.imread("lewis-hine-taschen-main-3.jpg", 0)
 # noise_creation(5, src)
 
@@ -194,4 +254,5 @@ def image_filtering(option: int, noisy_image, name: str, kx: int = 3, ky: int = 
 titles = ["Additive_noise", "Gaussian_noise", "Impulse_noise", "Speckle_noise", "Poisson_noise"]
 for title in titles:
     nim = cv.imread(f"Noisy_images/{title}.jpg", 0)
-    image_filtering(5, nim, title, k=5, r=24)
+    # image_filtering(5, nim, title, k=5, r=24)
+    edge_detection(5, nim, title)
