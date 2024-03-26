@@ -1,0 +1,132 @@
+\documentclass[a4paper, 12pt]{extarticle}
+
+% Includes 
+\usepackage[utf8]{inputenc} % UTF-8 encode 
+\usepackage[english, russian]{babel}
+\usepackage{geometry} % adjust page layout 
+\usepackage{graphicx} 
+\usepackage{hyperref} 
+\usepackage{amsmath} % math formulas 
+\usepackage{setspace} % for set line spacing 
+\usepackage{indentfirst} % indent on a first line after the paragraph 
+% \usepackage{pgfplots} % for plots 
+\usepackage{listings} % for code listings 
+\usepackage{xcolor} % colors (used for listings)
+\usepackage{sourcecodepro} % for another monospaced font 
+\usepackage{cmap} % for correct search in pdf
+
+
+% debug
+% \usepackage{showframe} % frame borders for demonstration 
+
+
+%%% Custom commands
+% commands for unnumbered sections
+\newcommand{\usection}[1]{\section*{#1} \addcontentsline{toc}{section}{\protect\numberline{}#1}}
+\newcommand{\usubsection}[1]{\subsection*{#1} \addcontentsline{toc}{subsection}{\protect\numberline{}#1}}
+\newcommand{\usubsubsection}[1]{\subsubsection*{#1} \addcontentsline{toc}{subsubsection}{\protect\numberline{}#1}}
+
+
+% Redefinition of section and subsection numbering style
+\def\thesection{\arabic{section}.}
+\def\thesubsection{\arabic{section}.\arabic{subsection}.}
+\def\thesubsubsection{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}.}
+
+
+% Settings for links 
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+
+% Layout
+\geometry{
+	left=17mm,
+	top=17mm,
+	right=17mm,
+	bottom=20mm,
+	marginparsep=0mm,
+	marginparwidth=0mm,
+	headheight=8mm,
+	headsep=5mm, 
+}
+
+\linespread{1.5} % line spacing
+\setlength{\parskip}{\baselineskip}  % Add space between paragraphs
+
+
+% overfull hbox settings
+\tolerance 10000 % default 200, max 10000
+\hbadness 10000 % default 1000, max 10000
+\emergencystretch 0pt  % default 0pt, how much the lines can stretch for the sake of good line breaks
+\hfuzz 0.4pt % ignore overfull box less than 
+\widowpenalty=10000 % no lines at the start of the page
+\vfuzz \hfuzz % don't care about underfull vbox if overfull is acceptable
+\raggedbottom % if the page is not filled, align the content to the bottom
+
+
+% Redefinition of table of contents command to get centered heading
+\makeatletter
+\renewcommand\tableofcontents{ 
+  \begin{singlespace}
+    \null\hfill\textbf{\Large\contentsname}\hfill\null\par
+    \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
+    \@starttoc{toc}
+  \end{singlespace}
+}
+\makeatother
+
+
+% Listings settings
+\definecolor{codegreen}{rgb}{0, 0.6, 0}
+\definecolor{codegray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{codepurple}{rgb}{0.58, 0, 0.82}
+\definecolor{backcolour_gray}{rgb}{0.98, 0.98, 0.98}
+
+\lstdefinestyle{python_white}{
+  language=Python,
+  backgroundcolor=\color{backcolour_gray},   
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{blue},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\small\singlespacing,
+  breakatwhitespace=true,         
+  breaklines=true,                 
+  captionpos=b, % t/b                  
+  keepspaces=true,                 
+  numbers=none, % none/left/rigth                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2,
+  frame=single, % none/leftline/topline/bottomline/lines/single/shadowbox
+  rulecolor=\color{gray}, % frame color 
+}
+
+
+\lstset{style=python_white}
+
+
+% For title page
+\def\name{Отчет по лабораторной работе №3} 
+\def\subname{Фильтрация изображений}
+\def\madeby{Александр Иванов, Ф ТЕХ.ЗРЕНИЕ 1.1 \\ Ани Аракелян, ТЕХ.ЗРЕНИЕ 1.1\\ Никита Братушка, ТЕХ.ЗРЕНИЕ 1.3}
+\def\teacher{Шаветов С. В.}
+
+\begin{document}
+
+\include{unformal_title} % Title page
+
+\addtocounter{page}{1} % Inc counter to start from 2 
+\tableofcontents % Table of contents
+\pagebreak
+
+\include{content} % Content
+
+\end{document}
