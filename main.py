@@ -1,6 +1,4 @@
 import sys
-
-import cv2
 import cv2 as cv
 import numpy as np
 import skimage as ski
@@ -11,10 +9,11 @@ def image_display(image, title: str, folder: str):
     if image is None:
         sys.exit("Could not read the image.")
 
-    cv.imshow(title, image/255)
+    cv.imshow(title, image)
     cv.waitKey(0)
-
-    # cv.imwrite(f"{folder}/{title.replace(' ', '_')}.jpg", image)
+    if image.dtype != np.uint8:
+        image = image.clip(0, 255).astype(np.uint8)
+    cv.imwrite(f"{folder}/{title.replace(' ', '_')}.jpg", image)
 
 
 def additive_noise(image, mean=4, sigma=0.1):
@@ -75,8 +74,8 @@ def contraharmonic(image, m: int, n: int, q):
     kernel = np.ones((m, n), dtype=np.float32)
     num = np.power(image, q+1)  # numerator
     den = np.power(image, q)    # denominator
-    filtered_image = cv2.filter2D(src=num, ddepth=-1, kernel=kernel) / cv2.filter2D(src=den, ddepth=-1, kernel=kernel)
-    return filtered_image
+    filtered_image = cv.filter2D(src=num, ddepth=-1, kernel=kernel) / cv.filter2D(src=den, ddepth=-1, kernel=kernel)
+    return filtered_image.clip(0, 255).astype(np.uint8)
 
 
 def image_filtering(option: int, noisy_image, name: str, kx: int = 3, ky: int = 3, m=3, n=3, q=0.0):
@@ -102,6 +101,6 @@ def image_filtering(option: int, noisy_image, name: str, kx: int = 3, ky: int = 
 
 # noisy images titles
 titles = ["Additive_noise", "Gaussian_noise", "Impulse_noise", "Speckle_noise", "Poisson_noise"]
-
-nim = cv.imread(f"Noisy_images/Impulse_noise.jpg", 0)
-image_filtering(2, nim, "Impulse_noise", m=3, n=3, q=-1.0)
+for title in titles:
+    nim = cv.imread(f"Noisy_images/{title}.jpg", 0)
+    image_filtering(2, nim, title, m=3, n=3, q=1.85)
