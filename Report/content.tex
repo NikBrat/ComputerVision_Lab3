@@ -4,7 +4,7 @@
 
 В данной лабораторной работе мы рассмотрим наиболее распространенные модели шумов на примере воздействия их на изображения \ref{img:source}. 
 
-\begin{figure}[ht!]
+\begin{figure}[ht!!]
     \centering
     \includegraphics[width=\textwidth]{../lewis-hine-taschen-main-3.jpg}
     \caption{Исходное изображение}
@@ -23,7 +23,7 @@
 где $s_{x,y}$ — интенсивность пикселя исходного изображения, если $d = 0$ — шум типа «перец», если
 $d = 255$ — шум типа «соль».
 
-\begin{figure}[ht!]
+\begin{figure}[ht!!]
     \centering
     \includegraphics[width=\textwidth]{../Noisy_images/Impulse_noise.jpg}
     \caption{Результат воздействия импульсного шума на изображение \ref{img:source}}
@@ -40,7 +40,7 @@ $d = 255$ — шум типа «соль».
 \end{equation}
 где $ I_{new}$ — зашумленное изображение, $I$ — исходное изображение, $\eta$ — не зависящий от сигнала аддитивный шум с гауссовым или любым другим распределением функции плотности вероятности.
 
-\begin{figure}[ht!]
+\begin{figure}[ht!!]
     \centering
     \includegraphics[width=\textwidth]{../Noisy_images/Additive_noise.jpg}
     \caption{Результат воздействия аддитивного шума на изображение \ref{img:source}}
@@ -58,7 +58,7 @@ $d = 255$ — шум типа «соль».
 
 Частным случаем мультипликативного шума является спекл-шум, который мы и рассмотрим
 
-\begin{figure}[ht!]
+\begin{figure}[ht!!]
     \centering
     \includegraphics[width=\textwidth]{../Noisy_images/Speckle_noise.jpg}
     \caption{Результат воздействия спекл-шума на изображение \ref{img:source}}
@@ -77,7 +77,7 @@ $p(z)$ случайной величины $z$ описывается следу
 где $z$ — интенсивность изображения (например, для полутонового изображения $z \in [0,255]$), $\eta$ — среднее (математическое ожидание) случайной величины $z$, $\sigma$ — среднеквадратичное отклонение, дисперсия $\sigma^2$ определяет мощность вносимого шума.
 
 
-\begin{figure}[ht!]
+\begin{figure}[ht!!]
     \centering
     \includegraphics[width=\textwidth]{../Noisy_images/Gaussian_noise.jpg}
     \caption{Результат воздействия Гауссова шума на изображение \ref{img:source}}
@@ -90,7 +90,7 @@ $p(z)$ случайной величины $z$ описывается следу
 \subsection{Шум квантования}
 Приближенно шум квантования можно описать распределением Пуассона. Такой шум не устраняется.
 
-\begin{figure}[ht!]
+\begin{figure}[ht!!]
     \centering
     \includegraphics[width=\textwidth]{../Noisy_images/Poisson_Noise.jpg}
     \caption{Результат воздействия шума квантования на изображение \ref{img:source}}
@@ -128,7 +128,7 @@ $p(z)$ случайной величины $z$ описывается следу
 
 Рассмотрим применение фильтра при $Q > 0$ и $Q < 0$ к различным типам шумов. 
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -174,7 +174,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:contraharmonic_-1.85} 
   \end{figure}
 
-  \begin{figure}[ht] 
+  \begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -220,7 +220,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:contraharmonic_-0.85} 
   \end{figure}
 
-  \begin{figure}[ht] 
+  \begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -266,7 +266,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:contraharmonic_-0.5} 
   \end{figure}
 
-  \begin{figure}[ht] 
+  \begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -313,7 +313,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:contraharmonic_0.5} 
   \end{figure}
 
-  \begin{figure}[ht] 
+  \begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -359,7 +359,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:contraharmonic_0.85} 
   \end{figure}
 
-  \begin{figure}[ht] 
+  \begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -413,7 +413,7 @@ $p(z)$ случайной величины $z$ описывается следу
    G_\sigma = \frac{1}{2\pi\sigma^2} e^{-\frac{x^2+y^2}{2\sigma^2}} = \frac{1}{\sigma\sqrt{2\pi}} e^{\frac{-x^2}{2\sigma^2}} \cdot \frac{1}{\sigma\sqrt{2\pi}} e^{\frac{-y^2}{2\sigma^2}}
 \end{equation}
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -459,7 +459,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:gaussian_3} 
   \end{figure}
 
-  \begin{figure}[ht] 
+  \begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -505,7 +505,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:gaussian_7} 
   \end{figure}
 
-  \begin{figure}[ht] 
+  \begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -556,7 +556,7 @@ $p(z)$ случайной величины $z$ описывается следу
 
 \subsubsection{Медианная фильтрация}
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -602,7 +602,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:median_3} 
 \end{figure}
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -648,7 +648,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:median_5} 
 \end{figure}
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -698,7 +698,7 @@ $p(z)$ случайной величины $z$ описывается следу
 \subsubsection{Взвешенная медианная фильтрация}
 
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -744,7 +744,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:median2d_3} 
 \end{figure}
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -790,7 +790,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:median2d_5} 
 \end{figure}
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -839,9 +839,30 @@ $p(z)$ случайной величины $z$ описывается следу
 
 
 \subsubsection{Адаптивная медианная фильтрация}
+
+Обозначим через $z_{min},~z_{max},~z_{med}$ минимальное, максимальное и медианное значения интенсивностей в окне, $z_{i,j}$ — значение интенсивности пикселя с координатами $(i, j), s_{max}$ — максимально допустимый размер окна.
+Алгоритм адаптивной медианной фильтрации
+состоит из следующих шагов: \\
+\begin{enumerate}
+    \item Вычисление значений $z_{min}, z_{max}, z_{med}, A_1 =  z_{med} - z_{min}, A_2 = z_{med} - z_{max}$ пикселя $(i, j)$ в заданном окне. \\
+    (a) Если $A_1 > 0 $ и $A_2 < 0$, перейти на шаг 2. В противном случае увеличить размер окна. \\
+    (b) Если текущий размер окна $s \le s_{max}$, повторить шаг 1. В
+противном случае результат фильтрации равен $z_{i,j}$. 
+    \item Вычисление значений $B_1 = z_{i,j} - z_{min}, B_2 = z_{i,j} - z_{max}$. \\
+    (a) Если $B_1 > 0$ и $B_2 < 0$, результат фильтрации равен $z_{i,j}$.
+    В противном случае результат фильтрации равен $z_{med}$.
+
+    \item Изменение координат $(i,j)$.
+    (a) Если не достигнут предел изображения, перейти на шаг 1. В противном случае фильтрация окончена.
+\end{enumerate}
+
+
+Основной идеей является увеличение размера окна до тех пор,
+пока алгоритм не найдет медианное значение, не являющееся импульсным шумом, или пока не достигнет максимального размера
+окна. В последнем случае алгоритм вернет величину $z_{i,j}$.
 \subsubsection{Ранговая фильтрация}
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -887,7 +908,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:rang_3_1} 
 \end{figure}
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -933,7 +954,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:rang_3_5} 
 \end{figure}
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -982,7 +1003,7 @@ $p(z)$ случайной величины $z$ описывается следу
 
 
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -1028,7 +1049,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:rang_5_1} 
 \end{figure}
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -1074,7 +1095,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:rang_5_14} 
 \end{figure}
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -1123,7 +1144,7 @@ $p(z)$ случайной величины $z$ описывается следу
 
 \subsubsection{Винеровская фильтрация}
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -1169,7 +1190,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:weiner_3} 
 \end{figure}
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -1215,7 +1236,7 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:weiner_5} 
 \end{figure}
 
-\begin{figure}[ht] 
+\begin{figure}[ht!] 
     \centering
     \begin{subfigure}[b]{0.5\linewidth}
         \centering
@@ -1265,11 +1286,246 @@ $p(z)$ случайной величины $z$ описывается следу
 
 \subsection{Высокочастотная фильтрация}
 \subsubsection{Фильтр Робертса}
-\newpage
+
+\begin{figure}[ht!!] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{roberts:a} 
+        \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Robertson_Impulse_noise.jpg} 
+      \caption{Импульсный шум} 
+      \label{roberts:b} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Robertson_Additive_noise.jpg} 
+      \caption{Аддитивный шум} 
+      \label{roberts:c} 
+      \vspace{4ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Robertson_Gaussian_noise.jpg} 
+      \caption{Гауссов шум} 
+      \label{roberts:d} 
+      \vspace{4ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Robertson_Poisson_noise.jpg} 
+      \caption{Шум квантования} 
+      \label{roberts:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Edge_Detection/Robertson_Speckle_noise.jpg} 
+        \caption{Мультипликативный шум} 
+        \label{roberts:f} 
+    \end{subfigure} 
+    \caption{Результат применения фильтра Робертса к различным типам шумов}
+    \label{img:roberts} 
+\end{figure}
+\FloatBarrier
+\clearpage
 \subsubsection{Фильтр Превитта}
+\begin{figure}[ht!!] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{prewitt:a} 
+        \vspace{3ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Prewitt_Impulse_noise.jpg} 
+      \caption{Импульсный шум} 
+      \label{prewitt:b} 
+      \vspace{3ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Prewitt_Additive_noise.jpg} 
+      \caption{Аддитивный шум} 
+      \label{prewitt:c} 
+      \vspace{3ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Prewitt_Gaussian_noise.jpg} 
+      \caption{Гауссов шум} 
+      \label{prewitt:d} 
+      \vspace{3ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Prewitt_Poisson_noise.jpg} 
+      \caption{Шум квантования} 
+      \label{prewitt:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Edge_Detection/Prewitt_Speckle_noise.jpg} 
+        \caption{Мультипликативный шум} 
+        \label{prewitt:f} 
+    \end{subfigure} 
+    \caption{Результат применения фильтра Превитта к различным типам шумов}
+    \label{img:prewitt} 
+\end{figure}
+\FloatBarrier
+\clearpage
 \subsubsection{Фильтр Собела}
+\begin{figure}[ht!!] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{Sobel:a} 
+        \vspace{3ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Sobel_Impulse_noise.jpg} 
+      \caption{Импульсный шум} 
+      \label{Sobel:b} 
+      \vspace{3ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Sobel_Additive_noise.jpg} 
+      \caption{Аддитивный шум} 
+      \label{Sobel:c} 
+      \vspace{3ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Sobel_Gaussian_noise.jpg} 
+      \caption{Гауссов шум} 
+      \label{Sobel:d} 
+      \vspace{3ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Sobel_Poisson_noise.jpg} 
+      \caption{Шум квантования} 
+      \label{Sobel:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Edge_Detection/Sobel_Speckle_noise.jpg} 
+        \caption{Мультипликативный шум} 
+        \label{Sobel:f} 
+    \end{subfigure} 
+    \caption{Результат применения фильтра Собела к различным типам шумов}
+    \label{img:Sobel} 
+\end{figure}
+\FloatBarrier
+\clearpage
 \subsubsection{Фильтр Лапласа}
+\begin{figure}[ht!!] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{Laplassian:a} 
+        \vspace{3ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Laplassian_Impulse_noise.jpg} 
+      \caption{Импульсный шум} 
+      \label{Laplassian:b} 
+      \vspace{3ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Laplassian_Additive_noise.jpg} 
+      \caption{Аддитивный шум} 
+      \label{Laplassian:c} 
+      \vspace{3ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Laplassian_Gaussian_noise.jpg} 
+      \caption{Гауссов шум} 
+      \label{Laplassian:d} 
+      \vspace{3ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Laplassian_Poisson_noise.jpg} 
+      \caption{Шум квантования} 
+      \label{Laplassian:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Edge_Detection/Laplassian_Speckle_noise.jpg} 
+        \caption{Мультипликативный шум} 
+        \label{Laplassian:f} 
+    \end{subfigure} 
+    \caption{Результат применения фильтра Лапласса к различным типам шумов}
+    \label{img:Laplassian} 
+\end{figure}
+\FloatBarrier
+\clearpage
 \subsubsection{Алгоритм Кэнни}
+\begin{figure}[ht!!] 
+    \centering
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+        \caption{Исходное изображение} 
+        \label{Canny:a} 
+        \vspace{3ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Canny_Impulse_noise.jpg} 
+      \caption{Импульсный шум} 
+      \label{Canny:b} 
+      \vspace{3ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Canny_Additive_noise.jpg} 
+      \caption{Аддитивный шум} 
+      \label{Canny:c} 
+      \vspace{3ex}
+    \end{subfigure}%%
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Canny_Gaussian_noise.jpg} 
+      \caption{Гауссов шум} 
+      \label{Canny:d} 
+      \vspace{3ex}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Canny_Poisson_noise.jpg} 
+      \caption{Шум квантования} 
+      \label{Canny:e}
+    \end{subfigure}%% 
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{../Edge_Detection/Canny_Speckle_noise.jpg} 
+        \caption{Мультипликативный шум} 
+        \label{Canny:f} 
+    \end{subfigure} 
+    \caption{Результат применения фильтра Кэнни к различным типам шумов}
+    \label{img:Canny} 
+\end{figure}
+\FloatBarrier
+\clearpage
 \section{Выводы}
 
 \section{Ответы на вопросы}
