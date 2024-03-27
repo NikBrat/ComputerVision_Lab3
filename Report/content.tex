@@ -407,6 +407,9 @@ $p(z)$ случайной величины $z$ описывается следу
 
   \FloatBarrier
 
+При контргармоническом фильтре одновременное удаление белых и черных точек невозможно, такой фильтр является обобщением усредняющих фильтров. 
+Результаты обработки доказывают, что при $Q$ < 0 подавляются шумы типа «соль», и заметно, что изображения становятся темнее, а при $Q$ > 0 подавляются шумы типа «перец», и картинки будто обесцвечивают, причем чем больше значения мы берем, тем больше виден эффект.
+
 \subsubsection{Фильтр Гаусса}
 При фильтрации изображений будем использовать двумерный фильтр Гаусса:
 \begin{equation}
@@ -551,6 +554,8 @@ $p(z)$ случайной величины $z$ описывается следу
     \label{img:gaussian_11} 
 \end{figure}
   \FloatBarrier
+
+Рассмотрев применение фильтра Гаусса при различных $n$, можно сделать вывод: чем больше значение $n$ мы берём больше получаем эффект размытия на изображениях.
 
 \subsection{Нелинейная фильтрация}
 
@@ -860,6 +865,165 @@ $p(z)$ случайной величины $z$ описывается следу
 Основной идеей является увеличение размера окна до тех пор,
 пока алгоритм не найдет медианное значение, не являющееся импульсным шумом, или пока не достигнет максимального размера
 окна. В последнем случае алгоритм вернет величину $z_{i,j}$.
+
+\begin{figure}[ht!] 
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+      \caption{Исходное изображение} 
+      \vspace{4ex}
+  \end{subfigure}%%
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Impulse_noise_k=3.jpg} 
+    \caption{Импульсный шум} 
+    \vspace{4ex}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Additive_noise_k=3.jpg} 
+    \caption{Аддитивный шум} 
+    \vspace{4ex}
+  \end{subfigure}%%
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Gaussian_noise_k=3.jpg} 
+    \caption{Гауссов шум} 
+    \vspace{4ex}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Poisson_noise_k=3.jpg} 
+    \caption{Шум квантования} 
+  \end{subfigure}%% 
+  \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Speckle_noise_k=3.jpg} 
+      \caption{Мультипликативный шум} 
+  \end{subfigure} 
+  \caption{Результат применения адаптивной медианной фильтрации к различным типам шумов при $k = 3$}
+\end{figure}
+
+\begin{figure}[ht!] 
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+      \caption{Исходное изображение} 
+      \vspace{4ex}
+  \end{subfigure}%%
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Impulse_noise_k=5.jpg} 
+    \caption{Импульсный шум} 
+    \vspace{4ex}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Additive_noise_k=5.jpg} 
+    \caption{Аддитивный шум} 
+    \vspace{4ex}
+  \end{subfigure}%%
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Gaussian_noise_k=5.jpg} 
+    \caption{Гауссов шум} 
+    \vspace{4ex}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Poisson_noise_k=5.jpg} 
+    \caption{Шум квантования} 
+  \end{subfigure}%% 
+  \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Speckle_noise_k=5.jpg} 
+      \caption{Мультипликативный шум} 
+  \end{subfigure} 
+  \caption{Результат применения адаптивной медианной фильтрации к различным типам шумов при $k = 5$}
+\end{figure}
+
+\begin{figure}[ht!] 
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+      \caption{Исходное изображение} 
+      \vspace{4ex}
+  \end{subfigure}%%
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Impulse_noise_k=7.jpg} 
+    \caption{Импульсный шум} 
+    \vspace{4ex}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Additive_noise_k=7.jpg} 
+    \caption{Аддитивный шум} 
+    \vspace{4ex}
+  \end{subfigure}%%
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Gaussian_noise_k=7.jpg} 
+    \caption{Гауссов шум} 
+    \vspace{4ex}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Poisson_noise_k=7.jpg} 
+    \caption{Шум квантования} 
+  \end{subfigure}%% 
+  \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Speckle_noise_k=7.jpg} 
+      \caption{Мультипликативный шум} 
+  \end{subfigure} 
+  \caption{Результат применения адаптивной медианной фильтрации к различным типам шумов при $k = 3$}
+\end{figure}
+
+
+\begin{figure}[ht!] 
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
+      \caption{Исходное изображение} 
+      \vspace{4ex}
+  \end{subfigure}%%
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Impulse_noise_k=9.jpg} 
+    \caption{Импульсный шум} 
+    \vspace{4ex}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Additive_noise_k=9.jpg} 
+    \caption{Аддитивный шум} 
+    \vspace{4ex}
+  \end{subfigure}%%
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Gaussian_noise_k=9.jpg} 
+    \caption{Гауссов шум} 
+    \vspace{4ex}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Poisson_noise_k=9.jpg} 
+    \caption{Шум квантования} 
+  \end{subfigure}%% 
+  \begin{subfigure}[b]{0.5\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{../Adaptive_Median_Filter/Adaptive_Median_Speckle_noise_k=9.jpg} 
+      \caption{Мультипликативный шум} 
+  \end{subfigure} 
+  \caption{Результат применения адаптивной медианной фильтрации к различным типам шумов при $k = 9$}
+\end{figure}
+\FloatBarrier
+
 \subsubsection{Ранговая фильтрация}
 
 \begin{figure}[ht!] 
@@ -1287,246 +1451,73 @@ $p(z)$ случайной величины $z$ описывается следу
 \subsection{Высокочастотная фильтрация}
 \subsubsection{Фильтр Робертса}
 
-\begin{figure}[ht!!] 
-    \centering
-    \begin{subfigure}[b]{0.5\linewidth}
-        \centering
-        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
-        \caption{Исходное изображение} 
-        \label{roberts:a} 
-        \vspace{4ex}
-    \end{subfigure}%%
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Robertson_Impulse_noise.jpg} 
-      \caption{Импульсный шум} 
-      \label{roberts:b} 
-      \vspace{4ex}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Robertson_Additive_noise.jpg} 
-      \caption{Аддитивный шум} 
-      \label{roberts:c} 
-      \vspace{4ex}
-    \end{subfigure}%%
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Robertson_Gaussian_noise.jpg} 
-      \caption{Гауссов шум} 
-      \label{roberts:d} 
-      \vspace{4ex}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Robertson_Poisson_noise.jpg} 
-      \caption{Шум квантования} 
-      \label{roberts:e}
-    \end{subfigure}%% 
-    \begin{subfigure}[b]{0.5\linewidth}
-        \centering
-        \includegraphics[width=0.95\linewidth]{../Edge_Detection/Robertson_Speckle_noise.jpg} 
-        \caption{Мультипликативный шум} 
-        \label{roberts:f} 
-    \end{subfigure} 
-    \caption{Результат применения фильтра Робертса к различным типам шумов}
-    \label{img:roberts} 
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=\textwidth]{../Edge_Detection/Robertson_Smoking_boys.jpg}
+  \caption{Фильтр Робертса}
+  \caption{Результат применения фильтра Робертса}
+  \label{img:roberts}  
 \end{figure}
 \FloatBarrier
-\clearpage
+
+Наблюдаем, что изображение стало практически черным, но, при этом, границы объектов на изображении различимы. 
+
 \subsubsection{Фильтр Превитта}
-\begin{figure}[ht!!] 
-    \centering
-    \begin{subfigure}[b]{0.5\linewidth}
-        \centering
-        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
-        \caption{Исходное изображение} 
-        \label{prewitt:a} 
-        \vspace{3ex}
-    \end{subfigure}%%
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Prewitt_Impulse_noise.jpg} 
-      \caption{Импульсный шум} 
-      \label{prewitt:b} 
-      \vspace{3ex}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Prewitt_Additive_noise.jpg} 
-      \caption{Аддитивный шум} 
-      \label{prewitt:c} 
-      \vspace{3ex}
-    \end{subfigure}%%
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Prewitt_Gaussian_noise.jpg} 
-      \caption{Гауссов шум} 
-      \label{prewitt:d} 
-      \vspace{3ex}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Prewitt_Poisson_noise.jpg} 
-      \caption{Шум квантования} 
-      \label{prewitt:e}
-    \end{subfigure}%% 
-    \begin{subfigure}[b]{0.5\linewidth}
-        \centering
-        \includegraphics[width=0.95\linewidth]{../Edge_Detection/Prewitt_Speckle_noise.jpg} 
-        \caption{Мультипликативный шум} 
-        \label{prewitt:f} 
-    \end{subfigure} 
-    \caption{Результат применения фильтра Превитта к различным типам шумов}
-    \label{img:prewitt} 
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=\textwidth]{../Edge_Detection/Prewitt_Smoking_boys.jpg}
+  \caption{Фильтр Превитта}
+  \caption{Результат применения фильтра Превитта}
+  \label{img:prewitt}  
 \end{figure}
 \FloatBarrier
-\clearpage
+
+В отличие от прошлого фильтра, границы объектов заметны отчетливо, но, в то же время, присутствуют артефакты -- белые пиксели там, где нет явных границ. 
 \subsubsection{Фильтр Собела}
-\begin{figure}[ht!!] 
-    \centering
-    \begin{subfigure}[b]{0.5\linewidth}
-        \centering
-        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
-        \caption{Исходное изображение} 
-        \label{Sobel:a} 
-        \vspace{3ex}
-    \end{subfigure}%%
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Sobel_Impulse_noise.jpg} 
-      \caption{Импульсный шум} 
-      \label{Sobel:b} 
-      \vspace{3ex}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Sobel_Additive_noise.jpg} 
-      \caption{Аддитивный шум} 
-      \label{Sobel:c} 
-      \vspace{3ex}
-    \end{subfigure}%%
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Sobel_Gaussian_noise.jpg} 
-      \caption{Гауссов шум} 
-      \label{Sobel:d} 
-      \vspace{3ex}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Sobel_Poisson_noise.jpg} 
-      \caption{Шум квантования} 
-      \label{Sobel:e}
-    \end{subfigure}%% 
-    \begin{subfigure}[b]{0.5\linewidth}
-        \centering
-        \includegraphics[width=0.95\linewidth]{../Edge_Detection/Sobel_Speckle_noise.jpg} 
-        \caption{Мультипликативный шум} 
-        \label{Sobel:f} 
-    \end{subfigure} 
-    \caption{Результат применения фильтра Собела к различным типам шумов}
-    \label{img:Sobel} 
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=\textwidth]{../Edge_Detection/Sobel_Smoking_boys.jpg}
+  \caption{Фильтр Собела}
+  \caption{Результат применения фильтра Собела}
+  \label{img:sobel}  
 \end{figure}
 \FloatBarrier
-\clearpage
+
+Границы стали еще более выраженными, количество артефактов увеличилось. 
+
 \subsubsection{Фильтр Лапласа}
-\begin{figure}[ht!!] 
-    \centering
-    \begin{subfigure}[b]{0.5\linewidth}
-        \centering
-        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
-        \caption{Исходное изображение} 
-        \label{Laplassian:a} 
-        \vspace{3ex}
-    \end{subfigure}%%
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Laplassian_Impulse_noise.jpg} 
-      \caption{Импульсный шум} 
-      \label{Laplassian:b} 
-      \vspace{3ex}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Laplassian_Additive_noise.jpg} 
-      \caption{Аддитивный шум} 
-      \label{Laplassian:c} 
-      \vspace{3ex}
-    \end{subfigure}%%
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Laplassian_Gaussian_noise.jpg} 
-      \caption{Гауссов шум} 
-      \label{Laplassian:d} 
-      \vspace{3ex}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Laplassian_Poisson_noise.jpg} 
-      \caption{Шум квантования} 
-      \label{Laplassian:e}
-    \end{subfigure}%% 
-    \begin{subfigure}[b]{0.5\linewidth}
-        \centering
-        \includegraphics[width=0.95\linewidth]{../Edge_Detection/Laplassian_Speckle_noise.jpg} 
-        \caption{Мультипликативный шум} 
-        \label{Laplassian:f} 
-    \end{subfigure} 
-    \caption{Результат применения фильтра Лапласса к различным типам шумов}
-    \label{img:Laplassian} 
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=\textwidth]{../Edge_Detection/Laplassian_Smoking_boys.jpg}
+  \caption{Фильтр Лапласа}
+  \caption{Результат применения фильтра Лапласа}
+  \label{img:laplassian}  
 \end{figure}
 \FloatBarrier
-\clearpage
+
+Границы выделились наиболее четко, количество артефактов уменьшилось.
+
 \subsubsection{Алгоритм Кэнни}
-\begin{figure}[ht!!] 
-    \centering
-    \begin{subfigure}[b]{0.5\linewidth}
-        \centering
-        \includegraphics[width=0.95\linewidth]{../lewis-hine-taschen-main-3.jpg} 
-        \caption{Исходное изображение} 
-        \label{Canny:a} 
-        \vspace{3ex}
-    \end{subfigure}%%
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Canny_Impulse_noise.jpg} 
-      \caption{Импульсный шум} 
-      \label{Canny:b} 
-      \vspace{3ex}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Canny_Additive_noise.jpg} 
-      \caption{Аддитивный шум} 
-      \label{Canny:c} 
-      \vspace{3ex}
-    \end{subfigure}%%
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Canny_Gaussian_noise.jpg} 
-      \caption{Гауссов шум} 
-      \label{Canny:d} 
-      \vspace{3ex}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.5\linewidth}
-      \centering
-      \includegraphics[width=0.95\linewidth]{../Edge_Detection/Canny_Poisson_noise.jpg} 
-      \caption{Шум квантования} 
-      \label{Canny:e}
-    \end{subfigure}%% 
-    \begin{subfigure}[b]{0.5\linewidth}
-        \centering
-        \includegraphics[width=0.95\linewidth]{../Edge_Detection/Canny_Speckle_noise.jpg} 
-        \caption{Мультипликативный шум} 
-        \label{Canny:f} 
-    \end{subfigure} 
-    \caption{Результат применения фильтра Кэнни к различным типам шумов}
-    \label{img:Canny} 
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=\textwidth]{../Edge_Detection/Canny_Smoking_boys.jpg}
+  \caption{Фильтр Лапласа}
+  \caption{Результат применения алгоритма Кэнни}
+  \label{img:canny}  
 \end{figure}
 \FloatBarrier
-\clearpage
+
+Наблюдаем наиболее яркие границы объектов. 
+
 \section{Выводы}
+
+
+В ходе выполнения лабораторной работы были изучены основные способы фильтрации изображений от шумов и выделения контуров. Были применены различные методы фильтрации, которые мы анализировали в процессе работы.
+
+Таким образом, фильтрация изображений и выделение контуров играют важную роль в обработке изображений, позволяя улучшить их качество и провести анализ содержимого более эффективно.
 
 \section{Ответы на вопросы}
 
@@ -1539,7 +1530,13 @@ $p(z)$ случайной величины $z$ описывается следу
 \begin{itemize}
 
 \question{В чем заключаются основные недостатки адаптивных методов фильтрации изображений?}
-\answer{}
+\answer{Адаптивные фильтры обычно более сложны, чем неадаптивные. Они требуют больше вычислительных ресурсов и времени для корректировки своих параметров в процессе фильтрации. 
+
+Несмотря на то, что адаптивные фильтры хорошо уменьшают шум, они иногда могут размывать границы на изображении. 
+
+Эффективность адаптивных фильтров во многом зависит от выбора параметров. Выбор подходящих параметров для данного изображения или набора изображений может быть сложной задачей.
+
+}
 
 \question{При каких значениях параметра $Q$ контргармонический фильтр будет работать как арифметический, а при каких -- как гармонический?}
 \answer{$Q$ — это порядок фильтра. Контргармонический фильтр является обобщением усредняющих фильтров. При $Q = 0$ фильтр превращается в арифметический, а при $Q = -1$ — в гармонический.}
@@ -1549,6 +1546,6 @@ $p(z)$ случайной величины $z$ описывается следу
 Робертса.}
 
 \question{Для чего на первом шаге выделения контуров, как правило, выполняется низкочастотная фильтрация?}
-\answer{}
+\answer{Для того, чтобы избавиться от возможных артефактов при выделении контуров. Низкочастотная фильтрация позволяет убрать мелкие детали и шумы на изображении, тем самым улучшить результат выделения контуров.}
 
 \end{itemize}
