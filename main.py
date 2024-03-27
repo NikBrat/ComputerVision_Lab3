@@ -252,7 +252,7 @@ def edge_detection(option: int, noisy_image, title):
 
 # noisy images titles
 titles = ["Additive_noise", "Gaussian_noise", "Impulse_noise", "Speckle_noise", "Poisson_noise"]
-for title in titles:
-    nim = cv.imread(f"Noisy_images/{title}.jpg", 0)
-    # image_filtering(5, nim, title, k=5, r=24)
-    edge_detection(5, nim, title)
+nim = cv.imread("lewis-hine-taschen-main-3.jpg", 0)
+# image_filtering(5, nim, title, k=5, r=24)
+for i in range(1, 6):
+    edge_detection(i, nim, 'Smoking_boys')
