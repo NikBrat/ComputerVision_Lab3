@@ -154,6 +154,18 @@ def wiener(src, k):
     return filtered_image
 
 
+def ad_median_filter(src, k):
+    """Adaptive Median Filtering"""
+    k_size = (k, k)
+    kernel = np.ones(k_size, dtype=np.float32)
+    rows, cols = src.shape[0:2]
+    if src.dtype == np.uint8:
+        copied_image = src.astype(np.float32) / 255
+    else:
+        copied_image = src
+    copied_image = cv.MakeBorder(copied_image, int)
+
+
 def image_filtering(option: int, noisy_image, name: str, kx: int = 3, ky: int = 3, m=3, n=3, q=0.0, k=0, r=0):
     """Image Filtering"""
     match option:
@@ -181,6 +193,10 @@ def image_filtering(option: int, noisy_image, name: str, kx: int = 3, ky: int = 
             # Wiener Filter
             wn = wiener(noisy_image, k)
             image_display(wn, f'Wiener_{name}_(k={k})', 'Wiener_Filter')
+        case 7:
+            # Adaptive Median Filter
+            am = ad_median_filter(noisy_image, k)
+            image_display(am, f'Adaptive_Median_{name}_k={k}', 'Adaptive_Median_Filter')
         case _:
             # displaying noisy image
             image_display(noisy_image, 'Noisy_image', 'Noisy_images')
