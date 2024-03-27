@@ -154,16 +154,30 @@ def wiener(src, k):
     return filtered_image
 
 
-def ad_median_filter(src, k):
+def ad_median_filter(src, k, s=3):
     """Adaptive Median Filtering"""
-    k_size = (k, k)
-    kernel = np.ones(k_size, dtype=np.float32)
     rows, cols = src.shape[0:2]
-    if src.dtype == np.uint8:
-        copied_image = src.astype(np.float32) / 255
-    else:
-        copied_image = src
-    copied_image = cv.MakeBorder(copied_image, int)
+    img_out = np.zeros((rows, cols))
+    # filling arrays for each kernel
+    for r in range(rows):
+        for c in range(cols):
+            while s <= k:
+                window = src[max(0, r - s // 2):min(rows, r + s // 2 + 1), max(0, c - s // 2):min(cols, c + s // 2 + 1)]
+                mn = np.min(window)
+                mx = np.max(window)
+                md = np.median(window)
+                if mn < md < mx:
+                    if mn < src[r, c] < mx:
+                        img_out[r, c] = src[r, c]
+                    else:
+                        img_out[r, c] = md
+                    break
+                else:
+                    s += 2
+            if s > k:
+                img_out[r, c] = src[r, c]
+
+    return img_out.astype(np.uint8)
 
 
 def image_filtering(option: int, noisy_image, name: str, kx: int = 3, ky: int = 3, m=3, n=3, q=0.0, k=0, r=0):
@@ -268,7 +282,9 @@ def edge_detection(option: int, noisy_image, title):
 
 # noisy images titles
 titles = ["Additive_noise", "Gaussian_noise", "Impulse_noise", "Speckle_noise", "Poisson_noise"]
-nim = cv.imread("lewis-hine-taschen-main-3.jpg", 0)
-# image_filtering(5, nim, title, k=5, r=24)
-for i in range(1, 6):
-    edge_detection(i, nim, 'Smoking_boys')
+for title in titles:
+    nim = cv.imread(f"Noisy_images/{title}.jpg", 0)
+    image_filtering(7, nim, title, k=9, r=24)
+
+'''for i in range(1, 6):
+    edge_detection(i, nim, 'Smoking_boys')'''
